@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://nw8pwth678ed"]
+
+[ext_resource type="Script" uid="uid://bry8vmwdh0eg5" path="res://scripts/Quest/quest_reward_item.gd" id="1_rmo7d"]
+[ext_resource type="Resource" uid="uid://dwg3owcvrkr0u" path="res://scenes/UI/Inventory/InventoryItems/general/items/diamond.tres" id="2_rqaxd"]
+[ext_resource type="Script" uid="uid://cyygfyscqtved" path="res://scripts/Quest/quest_resource.gd" id="2_x56qj"]
+
+[sub_resource type="Resource" id="Resource_gecgy"]
+script = ExtResource("1_rmo7d")
+item = ExtResource("2_rqaxd")
+quantity = 4
+metadata/_custom_type_script = "uid://bry8vmwdh0eg5"
+
+[resource]
+script = ExtResource("2_x56qj")
+title = "long quest"
+description = "multi step quest"
+steps = Array[String](["step1", "step2", "step3", "step4"])
+trust = 13
+reward_items = Array[ExtResource("1_rmo7d")]([SubResource("Resource_gecgy")])
+metadata/_custom_type_script = "uid://cyygfyscqtved"

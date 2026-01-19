@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://d25mkip1fua44"]
+
+[ext_resource type="Script" uid="uid://c4hcaoddermp7" path="res://scripts/Battle/card_slot.gd" id="1_6ucy2"]
+[ext_resource type="Texture2D" uid="uid://bh60y6e2qm3h5" path="res://assets/cards/Cardbacks/Untitled407_20251208205711.png" id="1_33ury"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ucy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_33ury")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idf8r"]
+size = Vector2(232, 327.2)
+
+[node name="CardSlot" type="Node2D"]
+scale = Vector2(0.49, 0.49)
+script = ExtResource("1_6ucy2")
+
+[node name="CardSlotImage" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1.00001, 0)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_6ucy2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.799994, 0.400003)
+shape = SubResource("RectangleShape2D_idf8r")

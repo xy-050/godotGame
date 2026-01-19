@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dno71ci5ec710"]
+
+[ext_resource type="Script" uid="uid://b7ptwma41l74d" path="res://scripts/character.gd" id="1_3i3nt"]
+[ext_resource type="Texture2D" uid="uid://cye72nfbuhwwy" path="res://assets/sprites/Hermera/Char.png" id="1_oolk3"]
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_3i3nt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(807, 551)
+scale = Vector2(0.482159, 0.502993)
+texture = ExtResource("1_oolk3")

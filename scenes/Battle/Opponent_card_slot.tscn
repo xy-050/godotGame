@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjyoelv6vyif"]
+
+[ext_resource type="Script" uid="uid://c4hcaoddermp7" path="res://scripts/Battle/card_slot.gd" id="1_mm4gt"]
+
+[node name="CardSlot" type="Node2D"]
+scale = Vector2(0.49, 0.49)
+script = ExtResource("1_mm4gt")

@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://bke2s1t8uq4xy"]
+
+[ext_resource type="Theme" uid="uid://b8t2nxcrn3y1b" path="res://scenes/Story/theme.tres" id="1_rbq88"]
+[ext_resource type="Script" uid="uid://d3tj7t1himxr7" path="res://scripts/storyScripts/dialog_ui.gd" id="1_xh3aw"]
+[ext_resource type="PackedScene" uid="uid://c3vwmgungbmh0" path="res://scenes/Story/button.tscn" id="3_315er"]
+
+[sub_resource type="Theme" id="Theme_yihbo"]
+
+[sub_resource type="FontFile" id="FontFile_ucd2t"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_p47hq"]
+font = SubResource("FontFile_ucd2t")
+font_size = 25
+
+[node name="DialogUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rbq88")
+script = ExtResource("1_xh3aw")
+
+[node name="ChoicesContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -155.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChoiceList" type="VBoxContainer" parent="ChoicesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" parent="ChoicesContainer/ChoiceList" instance=ExtResource("3_315er")]
+layout_mode = 2
+
+[node name="DialogBox" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -209.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogLine" type="RichTextLabel" parent="DialogBox"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "This is my dialog"
+scroll_active = false
+visible_characters = 14
+visible_ratio = 0.843
+
+[node name="Speakerbox" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -257.0
+offset_right = 202.0
+offset_bottom = -207.0
+grow_vertical = 0
+theme = SubResource("Theme_yihbo")
+
+[node name="Polygon2D" type="Polygon2D" parent="Speakerbox"]
+position = Vector2(-1, -2)
+scale = Vector2(2.08, 1)
+color = Color(0.657033, 0.424264, 0.826493, 0.392157)
+polygon = PackedVector2Array(0, 0, 172, 0, 200, 50, 0, 50)
+
+[node name="SpeakerName" type="Label" parent="Speakerbox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -16.0
+offset_right = 108.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name
+"
+label_settings = SubResource("LabelSettings_p47hq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control"]
+position = Vector2(-18, -25)
+polygon = PackedVector2Array(0, 0, 40, 20, 0, 40)

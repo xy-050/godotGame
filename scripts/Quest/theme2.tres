@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c055o6b5x1byv"]
+
+[ext_resource type="FontFile" uid="uid://8jdtoki7rvj3" path="res://font/Comic_Neue/ComicNeue-Bold.ttf" id="1_y4v4f"]
+
+[sub_resource type="Gradient" id="Gradient_l6d6t"]
+offsets = PackedFloat32Array(0.0973451, 0.495575, 1)
+colors = PackedColorArray(0.871828, 0.625268, 0.730016, 1, 0.635281, 0.716748, 0.985457, 1, 0.935565, 0.741127, 0.988066, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8wnd6"]
+gradient = SubResource("Gradient_l6d6t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y4v4f"]
+texture = SubResource("GradientTexture2D_8wnd6")
+modulate_color = Color(0.889661, 0.826559, 0.994293, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6eopd"]
+bg_color = Color(0.6, 0.6, 0.6, 0.137255)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.572138, 0.67142, 0.838249, 1)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6d6t"]
+bg_color = Color(0.5968, 0.520636, 0.963069, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.471299, 0.326282, 0.784091, 0.298039)
+
+[resource]
+default_font = ExtResource("1_y4v4f")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxTexture_y4v4f")
+Button/styles/normal = SubResource("StyleBoxFlat_6eopd")
+Button/styles/pressed = SubResource("StyleBoxFlat_l6d6t")

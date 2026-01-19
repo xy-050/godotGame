@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2rn8yfd7tfo7"]
+
+[ext_resource type="Theme" uid="uid://cbm0ln4y6r6oy" path="res://scripts/Quest/theme3.tres" id="1_00bds"]
+[ext_resource type="Script" uid="uid://cuq4lb23n0fw5" path="res://scenes/UI/unique_buttons/quest_item.gd" id="2_8n04v"]
+[ext_resource type="FontFile" uid="uid://bkfsc2nxl1xi5" path="res://font/Comic_Neue/ComicNeue-Regular.ttf" id="2_t36yf"]
+
+[node name="questItem" type="Button"]
+custom_minimum_size = Vector2(650, 100)
+size_flags_horizontal = 0
+theme = ExtResource("1_00bds")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+script = ExtResource("2_8n04v")
+
+[node name="titleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 197.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.424169, 0.0726724, 0.140693, 0.984314)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 40
+text = "Quest Title "
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="stepLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 641.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.310617, 0.310617, 0.310617, 1)
+theme_override_fonts/font = ExtResource("2_t36yf")
+theme_override_font_sizes/font_size = 40
+text = "quest step 1/5"
+clip_text = true
+text_overrun_behavior = 3

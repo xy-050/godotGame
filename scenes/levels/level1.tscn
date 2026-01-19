@@ -1,0 +1,250 @@
+[gd_scene load_steps=31 format=3 uid="uid://63mrkcy1whg4"]
+
+[ext_resource type="PackedScene" uid="uid://cf3f01cby6isp" path="res://scenes/Statues/statues.tscn" id="1_2r1tl"]
+[ext_resource type="Texture2D" uid="uid://byo7llp6ypit4" path="res://Overworld/map1_bg.png" id="1_bfxgj"]
+[ext_resource type="Texture2D" uid="uid://tyvubcid5ncs" path="res://Overworld/foreground.png" id="1_dd0lh"]
+[ext_resource type="Texture2D" uid="uid://drogxhaarayd7" path="res://Overworld/level1/alternate/alt_bg.png" id="2_sbmf2"]
+[ext_resource type="Texture2D" uid="uid://4sysg2yab020" path="res://Overworld/level1/alternate/alt_foreground.png" id="4_1xax6"]
+[ext_resource type="PackedScene" uid="uid://wgl4o5s64o7t" path="res://scenes/components/level_transition.tscn" id="5_nkeig"]
+[ext_resource type="PackedScene" uid="uid://ba0ylu6nrtlfp" path="res://scenes/GameManager/game_manager.tscn" id="6_1seuy"]
+[ext_resource type="Texture2D" uid="uid://cjlehdjp41vca" path="res://assets/sprites/MC/Background.png" id="7_5ntmo"]
+[ext_resource type="Resource" uid="uid://bswjrc0082g8h" path="res://scripts/Quest/quests/gather_ingredients.tres" id="7_c2nc4"]
+[ext_resource type="PackedScene" uid="uid://bda86wug2nkvl" path="res://scenes/Quest/quest_activated_switch.tscn" id="8_arkx4"]
+[ext_resource type="Texture2D" uid="uid://cqkvjw7g5hwnn" path="res://assets/sprites/MC/Neutral.png" id="8_nkeig"]
+[ext_resource type="PackedScene" uid="uid://br4v78avigaly" path="res://scenes/player/player.tscn" id="9_g7tkf"]
+[ext_resource type="Texture2D" uid="uid://bkpqhdhew1lrt" path="res://assets/sprites/MC/Border.png" id="9_nfihu"]
+[ext_resource type="PackedScene" uid="uid://dvtck4r8v8dkj" path="res://assets/sprites/Guide/guide.tscn" id="10_4fww7"]
+[ext_resource type="Script" uid="uid://seeq8fdw2tsa" path="res://scenes/levels/playerMenuDisplay.gd" id="10_nfihu"]
+[ext_resource type="PackedScene" uid="uid://c3d52dakpc7dv" path="res://scenes/UI/Inventory/inventory_pickup/item_pickup.tscn" id="13_jprdt"]
+[ext_resource type="AudioStream" uid="uid://dgkwgn13wgxlh" path="res://assets/Music/chane signifiante.mp3" id="14_6gwlt"]
+[ext_resource type="Script" uid="uid://cfsylx0fin2dl" path="res://scenes/enemies/dbr.gd" id="14_db1r7"]
+[ext_resource type="Resource" uid="uid://dwg3owcvrkr0u" path="res://scenes/UI/Inventory/InventoryItems/general/items/diamond.tres" id="14_ps2vj"]
+[ext_resource type="Texture2D" uid="uid://dnip7bgt03u7s" path="res://Overworld/DBL_observe.png" id="15_db1r7"]
+[ext_resource type="PackedScene" uid="uid://dk4a2h0m8kdpd" path="res://scenes/Quest/quest_notification.tscn" id="15_vhxpm"]
+[ext_resource type="Script" uid="uid://dni20qbkvkyqh" path="res://scripts/state_machine/node_state_machine.gd" id="17_c2nc4"]
+[ext_resource type="Script" uid="uid://jeb6awimt8is" path="res://scenes/enemies/patrol.gd" id="18_vhxpm"]
+[ext_resource type="Script" uid="uid://de7cref7h5ron" path="res://scenes/enemies/catch.gd" id="19_arkx4"]
+[ext_resource type="Script" uid="uid://wv4k58sialq7" path="res://scenes/enemies/scan.gd" id="20_jqv5m"]
+[ext_resource type="PackedScene" uid="uid://ds2jhme5l1spd" path="res://scenes/Quest/quest_advance_trigger.tscn" id="23_6gwlt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgguw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_nkeig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jprdt"]
+size = Vector2(21.7, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_noix2"]
+radius = 100.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_025c5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Catch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_db1r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_db1r7")
+}],
+"loop": true,
+"name": &"Patrol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_db1r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_db1r7")
+}],
+"loop": true,
+"name": &"Scan",
+"speed": 5.0
+}]
+
+[node name="Overworld" type="Node2D"]
+light_mask = 33
+
+[node name="Level1" type="Node2D" parent="."]
+
+[node name="backgrounds" type="Node2D" parent="Level1"]
+z_index = -2
+
+[node name="background" type="Sprite2D" parent="Level1/backgrounds"]
+position = Vector2(962, 540)
+scale = Vector2(0.348364, 0.380885)
+texture = ExtResource("1_bfxgj")
+
+[node name="background2" type="Sprite2D" parent="Level1/backgrounds"]
+position = Vector2(2757.5, 539.625)
+scale = Vector2(0.303455, 0.382036)
+texture = ExtResource("1_bfxgj")
+
+[node name="alt_bg" type="Sprite2D" parent="Level1/backgrounds"]
+position = Vector2(4442.78, 541.5)
+scale = Vector2(0.305012, 0.384071)
+texture = ExtResource("2_sbmf2")
+
+[node name="foregrounds" type="Node2D" parent="Level1"]
+position = Vector2(957, 547)
+scale = Vector2(0.349273, 0.381947)
+
+[node name="foreground2" type="Sprite2D" parent="Level1/foregrounds"]
+position = Vector2(5152.13, -1.30908)
+scale = Vector2(0.872463, 0.995366)
+texture = ExtResource("1_dd0lh")
+
+[node name="foreground" type="Sprite2D" parent="Level1/foregrounds"]
+texture = ExtResource("1_dd0lh")
+
+[node name="alt_foreground" type="Sprite2D" parent="Level1/foregrounds"]
+z_index = 1
+position = Vector2(9980.11, -14.4003)
+scale = Vector2(0.873276, 1.00556)
+texture = ExtResource("4_1xax6")
+
+[node name="QuestActivatedSwitch" parent="Level1" instance=ExtResource("8_arkx4")]
+position = Vector2(788, 716)
+scale = Vector2(10, 10)
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("7_c2nc4")
+settings_summary = "UPDATE QUEST:
+Quest:Gather ingredients
+Step: 0 - N/A
+Complete: false"
+
+[node name="Guide" parent="Level1/QuestActivatedSwitch" instance=ExtResource("10_4fww7")]
+
+[node name="QuestAdvanceTrigger" parent="Level1/QuestActivatedSwitch/Guide" instance=ExtResource("23_6gwlt")]
+linked_quest = ExtResource("7_c2nc4")
+settings_summary = "UPDATE QUEST:
+Quest:Gather ingredients
+Step: 0 - N/A
+Complete: false"
+
+[node name="Area2D" parent="Level1" instance=ExtResource("5_nkeig")]
+position = Vector2(-2, 545)
+level = "level0"
+
+[node name="statues" parent="Level1" instance=ExtResource("1_2r1tl")]
+position = Vector2(265, 608)
+scale = Vector2(1.12, 1.12)
+
+[node name="QuestNotification" parent="Level1" instance=ExtResource("15_vhxpm")]
+offset_left = 10.0
+offset_top = 6.10352e-05
+offset_right = 1930.0
+offset_bottom = 1080.0
+scale = Vector2(3, 3)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("9_g7tkf")]
+z_index = 1
+position = Vector2(145, 794)
+scale = Vector2(10, 10)
+
+[node name="follow cam" type="Camera2D" parent="Player"]
+ignore_rotation = false
+zoom = Vector2(1.2, 1.2)
+limit_left = 0
+limit_top = 0
+limit_right = 10000
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 8.0
+editor_draw_limits = true
+
+[node name="playerDisplay" type="CanvasLayer" parent="Player/follow cam"]
+scale = Vector2(10, 10)
+transform = Transform2D(10, 0, 0, 10, 0, 0)
+
+[node name="Background" type="Sprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.4, 22.43)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_5ntmo")
+
+[node name="Player" type="AnimatedSprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.5, 22.33)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_lgguw")
+
+[node name="Area2D" type="Area2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(-15.9, 89.43)
+script = ExtResource("10_nfihu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/follow cam/playerDisplay/Area2D"]
+position = Vector2(160.45, -66.7)
+shape = SubResource("RectangleShape2D_jprdt")
+
+[node name="Border" type="Sprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.6, 22.53)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("9_nfihu")
+
+[node name="GameManager" parent="." instance=ExtResource("6_1seuy")]
+position = Vector2(5, -349)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6gwlt")
+
+[node name="DBR" type="CharacterBody2D" parent="."]
+z_index = -1
+position = Vector2(19.0005, 77)
+collision_layer = 3
+script = ExtResource("14_db1r7")
+
+[node name="RayCast2D" type="RayCast2D" parent="DBR"]
+position = Vector2(507, 226)
+scale = Vector2(0.2, 0.2)
+target_position = Vector2(64.9976, 1915)
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DBR"]
+position = Vector2(509, 231)
+shape = SubResource("CircleShape2D_noix2")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="DBR"]
+position = Vector2(551, 230)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_025c5")
+animation = &"Patrol"
+
+[node name="StateMachine2" type="Node" parent="DBR" node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("17_c2nc4")
+initial_node_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="DBR/StateMachine2"]
+script = ExtResource("18_vhxpm")
+
+[node name="Catch" type="Node" parent="DBR/StateMachine2"]
+script = ExtResource("19_arkx4")
+
+[node name="Scan" type="Node" parent="DBR/StateMachine2"]
+script = ExtResource("20_jqv5m")
+
+[node name="QuestAdvanceTrigger" parent="DBR" instance=ExtResource("23_6gwlt")]
+position = Vector2(-19.0005, -77)
+
+[node name="ItemPickup" parent="." instance=ExtResource("13_jprdt")]
+position = Vector2(347, 856)
+item_data = ExtResource("14_ps2vj")
+
+[node name="CanvasModulate" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_bottom = -1.0

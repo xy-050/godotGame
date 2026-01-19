@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cskude282a5ph"]
+
+[ext_resource type="Script" uid="uid://bnhpmoqnuobgt" path="res://scenes/UI/Inventory/item_data.gd" id="1_ujqpp"]
+[ext_resource type="Texture2D" uid="uid://bnix7pdtvl68g" path="res://assets/inventory/general_textures/Untitled438_20251228210759.png" id="2_5apuv"]
+
+[resource]
+script = ExtResource("1_ujqpp")
+item_name = "cool_rock"
+item_class = "general"
+item_description = "It's a really round rock"
+texture = ExtResource("2_5apuv")
+metadata/_custom_type_script = "uid://bnhpmoqnuobgt"

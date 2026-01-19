@@ -1,0 +1,355 @@
+[gd_scene load_steps=31 format=3 uid="uid://d1ru2m5o0dw60"]
+
+[ext_resource type="Texture2D" uid="uid://dhedomqarfb34" path="res://assets/Backgrounds/Dawn.png" id="1_ipv8b"]
+[ext_resource type="Script" uid="uid://h36xh8fmdpbu" path="res://scripts/Battle/CardManager.gd" id="1_mpo2y"]
+[ext_resource type="PackedScene" uid="uid://d25mkip1fua44" path="res://scenes/Battle/card_slot.tscn" id="4_7th52"]
+[ext_resource type="Script" uid="uid://jxbgh8lvtyv0" path="res://scripts/Battle/deck.gd" id="5_5f8bu"]
+[ext_resource type="Script" uid="uid://cpbwlj55w0ij8" path="res://scripts/Battle/player_hand.gd" id="5_7th52"]
+[ext_resource type="Texture2D" uid="uid://bh60y6e2qm3h5" path="res://assets/cards/Cardbacks/Untitled407_20251208205711.png" id="6_xhdm5"]
+[ext_resource type="Script" uid="uid://dibpgqr10ywef" path="res://scripts/Battle/input_manager.gd" id="7_i3j6n"]
+[ext_resource type="Script" uid="uid://da0e6t6qu4wxt" path="res://scripts/Battle/PlayerBattle.gd" id="8_xhdm5"]
+[ext_resource type="PackedScene" uid="uid://brjyoelv6vyif" path="res://scenes/Battle/Opponent_card_slot.tscn" id="9_i3j6n"]
+[ext_resource type="Script" uid="uid://cshama6dk5blt" path="res://scripts/Battle/battle_manager.gd" id="10_o023q"]
+[ext_resource type="Script" uid="uid://d0d1ia8smsqom" path="res://scenes/Battle/trust_display.gd" id="13_jda1f"]
+[ext_resource type="Texture2D" uid="uid://cjlehdjp41vca" path="res://assets/sprites/MC/Background.png" id="13_peapi"]
+[ext_resource type="Texture2D" uid="uid://cqkvjw7g5hwnn" path="res://assets/sprites/MC/Neutral.png" id="14_eexbl"]
+[ext_resource type="Script" uid="uid://dgimsn0vivfrm" path="res://scenes/Battle/player_status_display.gd" id="14_f8yol"]
+[ext_resource type="Texture2D" uid="uid://bkpqhdhew1lrt" path="res://assets/sprites/MC/Border.png" id="15_7atfu"]
+[ext_resource type="Texture2D" uid="uid://bavhihwt0u0dj" path="res://assets/cards/card_img/Lovers.PNG" id="16_eexbl"]
+[ext_resource type="AudioStream" uid="uid://cqrsunpp21s56" path="res://assets/Music/Bonds.mp3" id="17_7atfu"]
+[ext_resource type="Texture2D" uid="uid://c08qrk5gqqi13" path="res://assets/cards/Abilities/Event/Trismegistus/Bomb/Untitled310_Restored13_20251214222707.png" id="18_40prd"]
+[ext_resource type="Script" uid="uid://wfhi5q2lj4hc" path="res://scripts/Battle/error_message.gd" id="19_2c3p5"]
+[ext_resource type="Script" uid="uid://dp74rpvqhfnfx" path="res://scenes/Battle/opponent.gd" id="22_dhx51"]
+[ext_resource type="Texture2D" uid="uid://5uxfs088bqov" path="res://assets/enemies/15Feb.png" id="22_ttnxv"]
+[ext_resource type="Texture2D" uid="uid://cwq4em4q2aba2" path="res://assets/enemies/BeyondX.png" id="23_eloa8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7oxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ipv8b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o023q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xhdm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikqpk"]
+size = Vector2(232, 327)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8yol"]
+size = Vector2(1917.5, 667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7rmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_eexbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jda1f"]
+size = Vector2(71.5, 62.25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7atfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_40prd")
+}],
+"loop": true,
+"name": &"Trismegistus_Bomb",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkdmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_ttnxv")
+}],
+"loop": true,
+"name": &"15Feb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_eloa8")
+}],
+"loop": true,
+"name": &"BeyondX",
+"speed": 5.0
+}]
+
+[node name="Battle" type="Node2D"]
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Center" type="AnimatedSprite2D" parent="Backgrounds"]
+z_index = -3
+position = Vector2(962, 602)
+scale = Vector2(0.571853, 0.634737)
+sprite_frames = SubResource("SpriteFrames_l7oxf")
+
+[node name="Up" type="AnimatedSprite2D" parent="Backgrounds"]
+z_index = -3
+position = Vector2(955, -603)
+scale = Vector2(0.571853, 0.634737)
+sprite_frames = SubResource("SpriteFrames_l7oxf")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_mpo2y")
+
+[node name="CardSlots" type="Node2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="CardSlot" parent="CardSlots" instance=ExtResource("4_7th52")]
+position = Vector2(559, 773)
+scale = Vector2(0.7, 0.7)
+
+[node name="CardSlot2" parent="CardSlots" instance=ExtResource("4_7th52")]
+position = Vector2(944, 773)
+scale = Vector2(0.7, 0.7)
+
+[node name="CardSlot3" parent="CardSlots" instance=ExtResource("4_7th52")]
+position = Vector2(749, 773)
+scale = Vector2(0.7, 0.7)
+
+[node name="CardSlot4" parent="CardSlots" instance=ExtResource("4_7th52")]
+position = Vector2(1145, 772)
+scale = Vector2(0.7, 0.7)
+
+[node name="CardSlot5" parent="CardSlots" instance=ExtResource("4_7th52")]
+position = Vector2(1340, 771)
+scale = Vector2(0.7, 0.7)
+
+[node name="EnemyCardSlot" parent="CardSlots" instance=ExtResource("9_i3j6n")]
+position = Vector2(686, 261)
+scale = Vector2(0.7, 0.7)
+
+[node name="EnemyCardSlot2" parent="CardSlots" instance=ExtResource("9_i3j6n")]
+position = Vector2(885, 258)
+scale = Vector2(0.7, 0.7)
+
+[node name="EnemyCardSlot3" parent="CardSlots" instance=ExtResource("9_i3j6n")]
+position = Vector2(1078, 258)
+scale = Vector2(0.7, 0.7)
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("5_7th52")
+
+[node name="Deck" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(110, 1000)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5_5f8bu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Deck"]
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_o023q")
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ikqpk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck"]
+offset_left = -44.0
+offset_top = -51.0
+offset_right = -4.0
+offset_bottom = -11.0
+scale = Vector2(2, 2)
+text = "Deck"
+
+[node name="CardDropArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+position = Vector2(961.25, 336)
+shape = SubResource("RectangleShape2D_f8yol")
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("7_i3j6n")
+
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 73.0
+offset_top = 547.0
+offset_right = 151.0
+offset_bottom = 578.0
+scale = Vector2(2.5, 2.5)
+theme_override_font_sizes/font_size = 0
+text = "End Turn"
+
+[node name="PlayerBattle" type="Node2D" parent="."]
+script = ExtResource("8_xhdm5")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerBattle"]
+position = Vector2(962, 602)
+scale = Vector2(2.3, 2.3)
+
+[node name="FlipUpButton" type="Button" parent="PlayerBattle"]
+offset_left = 450.0
+offset_top = 4.0
+offset_right = 629.0
+offset_bottom = 27.0
+scale = Vector2(5, 5)
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("10_o023q")
+
+[node name="BattleTimer" type="Timer" parent="."]
+
+[node name="PlayerHpBar" type="TextureProgressBar" parent="."]
+offset_left = 1615.0
+offset_top = 451.0
+offset_right = 1655.0
+offset_bottom = 491.0
+
+[node name="TrustDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1517.0
+offset_top = 400.0
+offset_right = 1557.0
+offset_bottom = 440.0
+script = ExtResource("13_jda1f")
+
+[node name="PlayerTrustBar" type="TextureProgressBar" parent="TrustDisplay"]
+modulate = Color(0.205117, 0.205117, 0.205117, 1)
+layout_mode = 0
+offset_right = 371.0
+offset_bottom = 38.0
+max_value = 125.0
+tint_under = Color(0.270377, 0.134324, 0.248103, 1)
+tint_over = Color(0.968841, 0.795093, 0.86057, 1)
+
+[node name="PlayerTrustLevel" type="Label" parent="TrustDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.86
+anchor_top = 0.5
+anchor_right = 4.86
+anchor_bottom = 0.5
+offset_left = -25.4
+offset_top = -16.0
+offset_right = 49.6
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+
+[node name="PlayerHealth" type="RichTextLabel" parent="."]
+offset_left = 1615.0
+offset_top = 451.0
+offset_right = 1655.0
+offset_bottom = 491.0
+text = "0"
+
+[node name="OpponentHealth" type="RichTextLabel" parent="."]
+offset_left = 135.0
+offset_top = 409.0
+offset_right = 175.0
+offset_bottom = 449.0
+text = "0"
+
+[node name="PlayerStatusDisplay" type="Node2D" parent="."]
+position = Vector2(1700, 230)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("14_f8yol")
+
+[node name="Background" type="Sprite2D" parent="PlayerStatusDisplay"]
+texture = ExtResource("13_peapi")
+
+[node name="Player" type="AnimatedSprite2D" parent="PlayerStatusDisplay"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_f7rmk")
+
+[node name="Border" type="Sprite2D" parent="PlayerStatusDisplay"]
+z_index = 2
+texture = ExtResource("15_7atfu")
+
+[node name="Area2D" type="Area2D" parent="PlayerStatusDisplay"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStatusDisplay/Area2D"]
+position = Vector2(-1, 0.5)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_jda1f")
+
+[node name="PlayerDiscard" type="Node2D" parent="."]
+position = Vector2(1700, 700)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDiscard"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("16_eexbl")
+
+[node name="OpponentDiscard" type="Node2D" parent="."]
+position = Vector2(1700, 700)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentDiscard"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("16_eexbl")
+
+[node name="Patience" type="Timer" parent="."]
+
+[node name="battle_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_7atfu")
+
+[node name="AnimationEffect" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="UltimateEffect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(964, 605.5)
+scale = Vector2(0.568283, 0.571053)
+sprite_frames = SubResource("SpriteFrames_7atfu")
+animation = &"Trismegistus_Bomb"
+
+[node name="TurnDisplay" type="RichTextLabel" parent="."]
+offset_left = 97.0
+offset_top = 655.0
+offset_right = 220.0
+offset_bottom = 725.0
+
+[node name="OpponentAI" type="Node" parent="."]
+
+[node name="ErrorMessage" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("19_2c3p5")
+
+[node name="Opponent" type="AnimatedSprite2D" parent="."]
+position = Vector2(925, 330)
+scale = Vector2(0.18998, 0.18998)
+sprite_frames = SubResource("SpriteFrames_bkdmu")
+animation = &"15Feb"
+script = ExtResource("22_dhx51")
+
+[connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="PlayerBattle/FlipUpButton" to="PlayerBattle" method="_on_flip_up_button_pressed"]
+[connection signal="finished" from="battle_music" to="BattleManager" method="_on_battle_music_finished"]

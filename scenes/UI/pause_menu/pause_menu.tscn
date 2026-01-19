@@ -1,0 +1,483 @@
+[gd_scene load_steps=21 format=3 uid="uid://devcbykcptai1"]
+
+[ext_resource type="Script" uid="uid://hvcseuthoa8g" path="res://scenes/UI/pause_menu/pause_menu.gd" id="1_q758x"]
+[ext_resource type="Texture2D" uid="uid://qeidjp0s6tef" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182336.png" id="2_8elpe"]
+[ext_resource type="PackedScene" uid="uid://5ybxmqiv5rpc" path="res://scenes/UI/Inventory/InventoryItems/general_inventory.tscn" id="2_y5lwe"]
+[ext_resource type="Theme" uid="uid://b8t2nxcrn3y1b" path="res://scenes/Story/theme.tres" id="4_3w83s"]
+[ext_resource type="Theme" uid="uid://c055o6b5x1byv" path="res://scripts/Quest/theme2.tres" id="4_anejv"]
+[ext_resource type="FontFile" uid="uid://8jdtoki7rvj3" path="res://font/Comic_Neue/ComicNeue-Bold.ttf" id="5_mb1qn"]
+[ext_resource type="Texture2D" uid="uid://bpsx4dtgn4ivh" path="res://assets/inventory/Untitled439_20251229104517.png" id="6_8sr1l"]
+[ext_resource type="Script" uid="uid://ywbvo7n4c3hx" path="res://scenes/UI/pause_menu/system.gd" id="6_wdar8"]
+[ext_resource type="Script" uid="uid://e82d7qtuhph5" path="res://scenes/UI/pause_menu/quests_ui.gd" id="7_5aljf"]
+[ext_resource type="PackedScene" uid="uid://c2rn8yfd7tfo7" path="res://scenes/UI/unique_buttons/quest_item.tscn" id="8_mb1qn"]
+[ext_resource type="FontFile" uid="uid://bkfsc2nxl1xi5" path="res://font/Comic_Neue/ComicNeue-Regular.ttf" id="9_5aljf"]
+[ext_resource type="PackedScene" uid="uid://crmb3nxe85o1q" path="res://scenes/Quest/quest_step_item.tscn" id="10_q77ed"]
+[ext_resource type="Texture2D" uid="uid://d15erqaovbutm" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182402.png" id="13_5hys7"]
+[ext_resource type="Texture2D" uid="uid://bfslejkbhevkv" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182409.png" id="14_5quow"]
+[ext_resource type="Texture2D" uid="uid://dr11moi1s5cg0" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182414.png" id="15_vd27a"]
+[ext_resource type="Texture2D" uid="uid://b7y2scnqej57h" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182420.png" id="16_6nju1"]
+[ext_resource type="Texture2D" uid="uid://dqpe3415svng8" path="res://assets/pause_menu/systemMenu/Untitled458_20260110182429.png" id="17_l7085"]
+
+[sub_resource type="Animation" id="Animation_07e4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/System/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8elpe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/System/quitButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/System/loadButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/System/saveButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Buttons:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/System/returnButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2olbx"]
+resource_name = "transition_to_systemMenu"
+length = 0.11
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/System/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0202372, 0.0398421, 0.0598685, 0.0796841, 0.100554),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_8elpe"), ExtResource("13_5hys7"), ExtResource("14_5quow"), ExtResource("15_vd27a"), ExtResource("16_6nju1"), ExtResource("17_l7085")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/System/quitButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0402637),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/System/loadButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0826354),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/System/saveButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Buttons:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/System/returnButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.066825, 0.11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_og4xc"]
+_data = {
+&"RESET": SubResource("Animation_07e4l"),
+&"transition_to_systemMenu": SubResource("Animation_2olbx")
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_q758x")
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1921.0
+offset_bottom = 1078.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+self_modulate = Color(0.0398829, 0.00860421, 0.0580679, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.258824, 0.34902, 0.741176)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 2.0
+offset_right = 1467.0
+offset_bottom = 1083.0
+texture = ExtResource("2_8elpe")
+
+[node name="pauseLabel" type="Label" parent="Control"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+layout_mode = 0
+offset_left = 795.0
+offset_top = 17.0
+offset_right = 1042.0
+offset_bottom = 96.0
+theme = ExtResource("4_3w83s")
+theme_override_font_sizes/font_size = 68
+text = "[paused]"
+
+[node name="Buttons" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryButton" type="Button" parent="Control/Buttons"]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 908.0
+offset_right = 1729.0
+offset_bottom = 1036.0
+theme = ExtResource("4_anejv")
+theme_override_fonts/font = ExtResource("5_mb1qn")
+theme_override_font_sizes/font_size = 44
+text = "Inventory"
+
+[node name="SystemButton" type="Button" parent="Control/Buttons"]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 908.0
+offset_right = 1109.0
+offset_bottom = 1036.0
+theme = ExtResource("4_anejv")
+theme_override_fonts/font = ExtResource("5_mb1qn")
+theme_override_font_sizes/font_size = 44
+text = "System"
+
+[node name="QuestButton" type="Button" parent="Control/Buttons"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 908.0
+offset_right = 525.0
+offset_bottom = 1036.0
+theme = ExtResource("4_anejv")
+theme_override_fonts/font = ExtResource("5_mb1qn")
+theme_override_font_sizes/font_size = 44
+text = "Quest"
+
+[node name="CharacterDBButton" type="Button" parent="Control/Buttons"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 38.0
+offset_right = 532.0
+offset_bottom = 166.0
+theme = ExtResource("4_anejv")
+theme_override_fonts/font = ExtResource("5_mb1qn")
+theme_override_font_sizes/font_size = 44
+text = "Characters"
+
+[node name="CardDBButton" type="Button" parent="Control/Buttons"]
+layout_mode = 0
+offset_left = 1386.0
+offset_top = 41.0
+offset_right = 1698.0
+offset_bottom = 166.0
+theme = ExtResource("4_anejv")
+theme_override_fonts/font = ExtResource("5_mb1qn")
+theme_override_font_sizes/font_size = 44
+text = "Cards"
+
+[node name="bgMusic" type="AudioStreamPlayer" parent="Control"]
+autoplay = true
+
+[node name="System" type="Control" parent="Control"]
+anchors_preset = 0
+offset_top = -3.0
+offset_right = 1924.0
+offset_bottom = 1079.0
+script = ExtResource("6_wdar8")
+
+[node name="TextureRect" type="Sprite2D" parent="Control/System"]
+position = Vector2(922, 547)
+texture = ExtResource("2_8elpe")
+
+[node name="quitButton" type="Button" parent="Control/System"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1118.0
+offset_top = 646.0
+offset_right = 1316.0
+offset_bottom = 758.0
+tooltip_text = "Save"
+theme = ExtResource("4_anejv")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="returnButton" type="Button" parent="Control/System"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1616.0
+offset_top = 40.0
+offset_right = 1860.0
+offset_bottom = 152.0
+tooltip_text = "Save"
+theme = ExtResource("4_anejv")
+theme_override_font_sizes/font_size = 60
+text = "return"
+
+[node name="loadButton" type="Button" parent="Control/System"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 840.0
+offset_top = 682.0
+offset_right = 1038.0
+offset_bottom = 794.0
+tooltip_text = "Save"
+theme = ExtResource("4_anejv")
+theme_override_font_sizes/font_size = 60
+text = "Load"
+
+[node name="saveButton" type="Button" parent="Control/System"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = 542.0
+offset_top = 655.0
+offset_right = 740.0
+offset_bottom = 767.0
+tooltip_text = "Save"
+theme = ExtResource("4_anejv")
+theme_override_font_sizes/font_size = 60
+text = "Save"
+
+[node name="ItemDescription" type="Label" parent="Control"]
+visible = false
+modulate = Color(0.10748, 0.10748, 0.10748, 1)
+z_index = 1
+layout_mode = 0
+offset_left = 269.0
+offset_top = 316.0
+offset_right = 610.0
+offset_bottom = 355.0
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Quests" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_5aljf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Quests"]
+position = Vector2(946, 642)
+scale = Vector2(2.29427, 2.28906)
+texture = ExtResource("6_8sr1l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Quests"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 153.0
+offset_right = 1656.0
+offset_bottom = 917.0
+theme_override_constants/separation = 20
+
+[node name="titleLabel" type="Label" parent="Control/Quests/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.424169, 0.0726724, 0.140693, 0.984314)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("9_5aljf")
+theme_override_font_sizes/font_size = 40
+text = "Quest Title"
+autowrap_mode = 2
+clip_text = true
+
+[node name="DescriptionLabel" type="Label" parent="Control/Quests/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.310617, 0.310617, 0.310617, 1)
+theme_override_fonts/font = ExtResource("9_5aljf")
+theme_override_font_sizes/font_size = 40
+text = "description "
+autowrap_mode = 2
+clip_text = true
+
+[node name="spacing" type="Control" parent="Control/Quests/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="questStepItem" parent="Control/Quests/VBoxContainer" instance=ExtResource("10_q77ed")]
+custom_minimum_size = Vector2(600, 60)
+layout_mode = 2
+
+[node name="questStepItem3" parent="Control/Quests/VBoxContainer" instance=ExtResource("10_q77ed")]
+custom_minimum_size = Vector2(600, 51)
+layout_mode = 2
+
+[node name="questStepItem5" parent="Control/Quests/VBoxContainer" instance=ExtResource("10_q77ed")]
+custom_minimum_size = Vector2(600, 51)
+layout_mode = 2
+
+[node name="questStepItem4" parent="Control/Quests/VBoxContainer" instance=ExtResource("10_q77ed")]
+custom_minimum_size = Vector2(600, 51)
+layout_mode = 2
+
+[node name="questStepItem2" parent="Control/Quests/VBoxContainer" instance=ExtResource("10_q77ed")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Quests"]
+layout_mode = 1
+offset_left = 229.0
+offset_top = 151.0
+offset_right = 926.0
+offset_bottom = 915.0
+follow_focus = true
+scroll_vertical_custom_step = 100.0
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Quests/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Quests/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="questItem" parent="Control/Quests/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("8_mb1qn")]
+layout_mode = 2
+
+[node name="ClosePage" type="Button" parent="Control/Quests"]
+layout_mode = 0
+offset_left = 1501.0
+offset_top = 150.0
+offset_right = 1632.0
+offset_bottom = 201.0
+text = "X"
+
+[node name="GeneralInventory" parent="Control" instance=ExtResource("2_y5lwe")]
+z_index = 1
+offset_left = 207.0
+offset_top = 134.0
+offset_right = 207.0
+offset_bottom = 134.0
+
+[node name="CharacterDB" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardDB" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_og4xc")
+}
+
+[connection signal="finished" from="Control/bgMusic" to="." method="_on_audio_stream_player_finished"]

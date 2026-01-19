@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://b5tqsk81xxpm6"]
+
+[ext_resource type="Texture2D" uid="uid://dqkb70v5e8aj7" path="res://Overworld/level10/Untitled310_Restored23_20260109211335.png" id="1_rrpq3"]
+[ext_resource type="Texture2D" uid="uid://b6q1yybu1abl2" path="res://Overworld/level10/Untitled310_Restored23_20260109211422.png" id="2_mdxo6"]
+[ext_resource type="Texture2D" uid="uid://dakou2duw67gj" path="res://Overworld/level10/Untitled310_Restored23_20260109211346.png" id="3_tb8ci"]
+[ext_resource type="PackedScene" uid="uid://br4v78avigaly" path="res://scenes/player/player.tscn" id="4_ujtvf"]
+[ext_resource type="Texture2D" uid="uid://cjlehdjp41vca" path="res://assets/sprites/MC/Background.png" id="5_infop"]
+[ext_resource type="Texture2D" uid="uid://bsdo73xurn62d" path="res://Overworld/rest_stop/Untitled455_20260108235540.png" id="5_mdxo6"]
+[ext_resource type="Texture2D" uid="uid://cqkvjw7g5hwnn" path="res://assets/sprites/MC/Neutral.png" id="6_s4x5n"]
+[ext_resource type="Script" uid="uid://seeq8fdw2tsa" path="res://scenes/levels/playerMenuDisplay.gd" id="7_8kjvp"]
+[ext_resource type="Texture2D" uid="uid://bkpqhdhew1lrt" path="res://assets/sprites/MC/Border.png" id="8_bu22b"]
+
+[sub_resource type="Gradient" id="Gradient_mdxo6"]
+offsets = PackedFloat32Array(0.26009, 0.701299, 1)
+colors = PackedColorArray(0.540991, 0.54099, 0.54099, 1, 0.454526, 0.454524, 0.454525, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tb8ci"]
+gradient = SubResource("Gradient_mdxo6")
+width = 160
+height = 140
+fill = 2
+fill_from = Vector2(0.1, 0)
+fill_to = Vector2(0.7, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ujtvf"]
+polygon = PackedVector2Array(-10.2, -1.5, -1.8, 12.6, -1.60001, -1.7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h1dae"]
+polygon = PackedVector2Array(-32.4, -1.6, -25.8, -1.5, -33.9, 13.3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sre3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_s4x5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1se4v"]
+size = Vector2(21.7, 20)
+
+[node name="level 10" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(2097, -10.65)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_rrpq3")
+
+[node name="grass" type="Sprite2D" parent="."]
+position = Vector2(2095, -5.64999)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_mdxo6")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(2096, -17.65)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_tb8ci")
+
+[node name="restStop" type="Sprite2D" parent="."]
+position = Vector2(1989, 772)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_mdxo6")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1982, 743.5)
+scale = Vector2(1.8125, 2.00714)
+color = Color(0.92354, 0.780947, 0.88692, 1)
+energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_tb8ci")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(1, 1, 1, 0.713726)
+position = Vector2(2159, 615)
+scale = Vector2(10, 10)
+occluder = SubResource("OccluderPolygon2D_ujtvf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LightOccluder2D"]
+occluder = SubResource("OccluderPolygon2D_h1dae")
+
+[node name="Player" parent="." instance=ExtResource("4_ujtvf")]
+position = Vector2(248, 752)
+scale = Vector2(10, 10)
+
+[node name="follow cam" type="Camera2D" parent="Player"]
+ignore_rotation = false
+zoom = Vector2(1.2, 1.2)
+limit_left = 0
+limit_top = 0
+limit_right = 10000
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 8.0
+editor_draw_limits = true
+
+[node name="playerDisplay" type="CanvasLayer" parent="Player/follow cam"]
+visible = false
+scale = Vector2(10, 10)
+transform = Transform2D(10, 0, 0, 10, 0, 0)
+
+[node name="Background" type="Sprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.4, 22.43)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("5_infop")
+
+[node name="Player" type="AnimatedSprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.5, 22.33)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_6sre3")
+
+[node name="Area2D" type="Area2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(-15.9, 89.43)
+script = ExtResource("7_8kjvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/follow cam/playerDisplay/Area2D"]
+position = Vector2(160.45, -66.7)
+shape = SubResource("RectangleShape2D_1se4v")
+
+[node name="Border" type="Sprite2D" parent="Player/follow cam/playerDisplay"]
+position = Vector2(144.6, 22.53)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("8_bu22b")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.67069, 0.67069, 0.67069, 1)

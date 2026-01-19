@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3d52dakpc7dv"]
+
+[ext_resource type="Script" uid="uid://dlcq3e7ss02ng" path="res://scenes/UI/Inventory/inventory_pickup/item_pickup.gd" id="1_oo8f3"]
+[ext_resource type="PackedScene" uid="uid://c0hm4np35bhyv" path="res://scenes/components/interactable_component.tscn" id="2_6r2dn"]
+[ext_resource type="AudioStream" uid="uid://c5hwphxd3mlfo" path="res://assets/Music/pickup.mp3" id="3_6r2dn"]
+[ext_resource type="PackedScene" uid="uid://d4jq6gmebonf" path="res://scenes/components/interactable_label_component.tscn" id="3_e46jg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rjyy"]
+
+[node name="ItemPickup" type="Node2D"]
+script = ExtResource("1_oo8f3")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_6r2dn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_1rjyy")
+
+[node name="Item" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6r2dn")
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("3_e46jg")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -17.0
+offset_top = -14.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://djv58xwpetoa5"]
+
+[ext_resource type="Script" uid="uid://bnhpmoqnuobgt" path="res://scenes/UI/Inventory/item_data.gd" id="1_shjmo"]
+[ext_resource type="Texture2D" uid="uid://bt1wtdaybx8bm" path="res://assets/inventory/general_textures/Untitled438_20251228210743.png" id="2_gwkm0"]
+
+[resource]
+resource_name = "square"
+script = ExtResource("1_shjmo")
+item_name = "square"
+item_class = "general"
+item_description = "It's a cool square"
+texture = ExtResource("2_gwkm0")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bik8f3tvw4252"]
+
+[ext_resource type="Texture2D" uid="uid://dhedomqarfb34" path="res://assets/Backgrounds/Dawn.png" id="2_g1n7y"]
+
+[node name="GameMenuScreenBackground" type="Node2D"]
+
+[node name="story_scene" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="story_scene"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="story_scene/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_g1n7y")
+expand_mode = 5

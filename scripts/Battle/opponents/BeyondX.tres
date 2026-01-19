@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="OpponentData" load_steps=2 format=3 uid="uid://pwty7qw4e8wh"]
+
+[ext_resource type="Script" uid="uid://42xvnghyj82t" path="res://scripts/Battle/opponent_data.gd" id="1_kklfb"]
+
+[resource]
+script = ExtResource("1_kklfb")
+opponent_name = ""
+health = 1000
+opponent_script_path = "res://scripts/Battle/opponents/opponent_skills/BeyondX.gd"
+patience_timer = 0.0
+sprite_path = ""
+music_path = ""
+look_ahead_depth = null
+type = null
+chance_weight = null

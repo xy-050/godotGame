@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://o2d8vx6rs6i0"]
+
+[ext_resource type="Texture2D" uid="uid://b3qqcw5166h84" path="res://Overworld/level0/Untitled310_Restored18_20251227131044.png" id="1_hghvf"]
+[ext_resource type="PackedScene" uid="uid://wgl4o5s64o7t" path="res://scenes/components/level_transition.tscn" id="2_5kr0j"]
+[ext_resource type="PackedScene" uid="uid://br4v78avigaly" path="res://scenes/player/player.tscn" id="3_ry65h"]
+
+[sub_resource type="Gradient" id="Gradient_hghvf"]
+offsets = PackedFloat32Array(0.26009, 0.701299, 1)
+colors = PackedColorArray(0.929715, 0.929715, 0.929715, 1, 0.454526, 0.454524, 0.454525, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hghvf"]
+gradient = SubResource("Gradient_hghvf")
+width = 160
+height = 140
+fill = 2
+fill_from = Vector2(0.1, 0)
+fill_to = Vector2(0.7, 0.9)
+metadata/_snap_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cperm"]
+polygon = PackedVector2Array(-1.54, -1.78, 0.120001, 2.24, 0.13, -1.765)
+
+[node name="Overworld" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(1050, 539)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("1_hghvf")
+
+[node name="Area2D" parent="." instance=ExtResource("2_5kr0j")]
+position = Vector2(1998, 534)
+level = "level1"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1050, 536)
+limit_left = 0
+limit_top = 0
+editor_draw_limits = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1047.5, 457)
+scale = Vector2(7.98125, 7)
+color = Color(0.843184, 0.843184, 0.843184, 1)
+energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_hghvf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(1, 1, 1, 0.713726)
+position = Vector2(1660, 356)
+scale = Vector2(200, 200)
+occluder = SubResource("OccluderPolygon2D_cperm")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(580, 129)
+scale = Vector2(4, 4)
+color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_ry65h")]
+position = Vector2(850, 547)
+scale = Vector2(17, 17)
+floor_block_on_wall = false

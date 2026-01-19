@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cbm0ln4y6r6oy"]
+
+[ext_resource type="FontFile" uid="uid://bkfsc2nxl1xi5" path="res://font/Comic_Neue/ComicNeue-Regular.ttf" id="1_xakqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u571t"]
+bg_color = Color(0.986222, 0.930342, 0.999334, 1)
+border_width_bottom = 10
+border_color = Color(0.983061, 0.745882, 0.825773, 1)
+
+[resource]
+default_font = ExtResource("1_xakqu")
+Button/styles/normal = SubResource("StyleBoxFlat_u571t")

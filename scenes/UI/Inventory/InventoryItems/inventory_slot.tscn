@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://deporn8apqj7"]
+
+[ext_resource type="Texture2D" uid="uid://w85p4r0r0c6v" path="res://assets/inventory/Untitled440_20251229114453.png" id="1_cmab4"]
+[ext_resource type="Texture2D" uid="uid://bnix7pdtvl68g" path="res://assets/inventory/general_textures/Untitled438_20251228210759.png" id="2_brg4s"]
+[ext_resource type="Script" uid="uid://c5r0fwuehr5ll" path="res://scenes/UI/Inventory/InventoryItems/inventory_slot_ui.gd" id="2_syu6k"]
+
+[node name="InventorySlot" type="TextureButton"]
+offset_right = 120.0
+offset_bottom = 120.0
+scale = Vector2(0.05, 0.05)
+size_flags_horizontal = 0
+tooltip_text = "item"
+texture_normal = ExtResource("1_cmab4")
+script = ExtResource("2_syu6k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 300.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_brg4s")
+stretch_mode = 3
+
+[node name="Quantity" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 119.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 14
+text = "99"

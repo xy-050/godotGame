@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2xpexqud6u8s"]
+
+[ext_resource type="Script" uid="uid://s5446xryxmgk" path="res://scripts/storyScripts/storyScene.gd" id="1_rmkex"]
+[ext_resource type="Texture2D" uid="uid://dhedomqarfb34" path="res://assets/Backgrounds/Dawn.png" id="2_ars24"]
+[ext_resource type="PackedScene" uid="uid://dno71ci5ec710" path="res://scenes/Story/character_sprite.tscn" id="3_vfpyi"]
+[ext_resource type="PackedScene" uid="uid://bke2s1t8uq4xy" path="res://scenes/Story/dialog_ui.tscn" id="4_f4v2b"]
+[ext_resource type="AudioStream" uid="uid://cqrsunpp21s56" path="res://assets/Music/Bonds.mp3" id="5_ars24"]
+
+[node name="Story" type="Node2D"]
+
+[node name="story_scene" type="Node2D" parent="."]
+script = ExtResource("1_rmkex")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="story_scene"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="story_scene/CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ars24")
+expand_mode = 5
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="story_scene"]
+
+[node name="Control" type="Control" parent="story_scene/CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CharacterSprite" parent="story_scene/CanvasLayer2/Control" instance=ExtResource("3_vfpyi")]
+unique_name_in_owner = true
+z_as_relative = false
+position = Vector2(-126, -281)
+
+[node name="DialogUI" parent="story_scene/CanvasLayer2" instance=ExtResource("4_f4v2b")]
+unique_name_in_owner = true
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_ars24")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="finished" from="backgroundMusic" to="story_scene" method="_on_audio_stream_player_finished"]

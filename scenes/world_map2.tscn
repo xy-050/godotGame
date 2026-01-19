@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c213l6ammmmm7"]
+
+[node name="world_map2" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="AnimationPlayer"]
+offset_right = 707.0
+offset_bottom = 463.0

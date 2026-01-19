@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf3f01cby6isp"]
+
+[ext_resource type="PackedScene" uid="uid://c0hm4np35bhyv" path="res://scenes/components/interactable_component.tscn" id="1_a0j1c"]
+[ext_resource type="Texture2D" uid="uid://bkroel2r7imcm" path="res://assets/statues/Untitled434_20251224161552.png" id="1_emh7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0j1c"]
+size = Vector2(115, 214)
+
+[node name="statue1" type="Node2D"]
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_a0j1c")]
+visible = false
+
+[node name="statue1" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(48, 28)
+scale = Vector2(0.302344, 0.270312)
+texture = ExtResource("1_emh7p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.5, -2)
+shape = SubResource("RectangleShape2D_a0j1c")
+one_way_collision = true
+one_way_collision_margin = 2.0

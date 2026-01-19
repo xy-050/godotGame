@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="OpponentData" load_steps=2 format=3 uid="uid://dxgfxcy5yjksc"]
+
+[ext_resource type="Script" uid="uid://42xvnghyj82t" path="res://scripts/Battle/opponent_data.gd" id="1_dmt52"]
+
+[resource]
+script = ExtResource("1_dmt52")
+opponent_name = "15Feb"
+hp = 1000
+opponent_script_path = "res://scripts/Battle/opponents/opponent_skills/15Feb/15Feb.gd"
+patience_timer = 0.0
+sprite_path = "res://assets/enemies/15Feb/"
+music_name = "Heartache"
+background = ""
+look_ahead_depth = 0.0
+type = 0
+chance_weight = 0.0
+has_minions = false

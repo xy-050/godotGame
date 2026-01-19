@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3vwmgungbmh0"]
+
+[ext_resource type="Theme" uid="uid://b8t2nxcrn3y1b" path="res://scenes/Story/theme.tres" id="1_7202j"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(700, 50)
+theme = ExtResource("1_7202j")
+text = "This is the first choice "
